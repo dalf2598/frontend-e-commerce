@@ -6,6 +6,12 @@
     padding: 23px 23px 10px 23px;
 }
 
+.DetailsCardContainer h3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .DetailsCardContainer button {
     display: block; 
     margin: 3px auto 0 auto;
