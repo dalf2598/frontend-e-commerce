@@ -3,5 +3,22 @@
     color: white;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    padding: 23px;
+    padding: 23px 23px 10px 23px;
+}
+
+.DetailsCardContainer button {
+    display: block; 
+    margin: 3px auto 0 auto;
+    padding: 10px 20px;
+    border-radius: 10px; 
+    background-color: white; 
+    color: black; 
+    border: none; 
+    cursor: pointer; 
+    transition: background-color 0.3s, color 0.3s;
+}
+  
+.DetailsCardContainer button:hover {
+    background-color: black;
+    color: white;
 }
