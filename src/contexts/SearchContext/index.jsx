@@ -16,6 +16,7 @@ function SearchProvider({ children }) {
     { value: "jewelery", checked: false },
     { value: "electronics", checked: false },
   ]);
+  const [rate, setRate] = useState(1);
 
   const [imageProduct, setImageProduct] = useState("");
   const [titleProduct, setTitleProduct] = useState("");
@@ -79,22 +80,27 @@ function SearchProvider({ children }) {
         return currentProducts;
       }
 
-      const productsFiltered = currentProducts.map((product) => {
+      const productsFilteredByCategory = currentProducts.map((product) => {
         if(belongToCheckedCategory(product, currentCategories)){
           return product;
         }
       }).filter(product => product !== undefined);;
 
-      return productsFiltered;
+      return productsFilteredByCategory;
+    }
+
+    const filterByRate = (currentProducts, currentRating) => {
+      const productsFilteredByRate = currentProducts.filter(product => Math.round(product.rating.rate) >= currentRating);
+      return productsFilteredByRate;
     }
 
     const searchResult = searchProducts(products, searchValue);
     const sortResult = sortProductsByNameOrPrice(searchResult, sortOrder);
-    const filterResult = filterByCategory(sortResult, categories);
-   
-    setDisplayedProducts(filterResult)
-
-  }, [searchValue, sortOrder, categories]);
+    const filterByCategoryResult = filterByCategory(sortResult, categories);
+    const filterByRateResult = filterByRate(filterByCategoryResult, rate);
+    
+    setDisplayedProducts(filterByRateResult);
+  }, [searchValue, sortOrder, categories, rate]);
 
   return (
     <SearchContext.Provider
@@ -102,6 +108,7 @@ function SearchProvider({ children }) {
         setSearchValue,
         setSortOrder,
         setCategories,
+        setRate,
         displayedProducts,
         isLoading,
         isOpen,

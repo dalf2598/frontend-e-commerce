@@ -1,7 +1,11 @@
 .RatingContainer {
     display: flex;
     align-items: center;
-    margin: 20px 0px 5px 0px;;
+    margin: 20px 0px 5px 0px;
+}
+
+.RatingContainer:hover {
+    cursor: pointer;
 }
 
 .RatingContainer .StarFilled {

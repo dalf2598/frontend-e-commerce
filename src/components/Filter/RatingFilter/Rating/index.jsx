@@ -2,7 +2,7 @@ import { AiFillStar } from 'react-icons/ai'
 import { AiOutlineStar } from 'react-icons/ai'
 import './Rating.css'
 
-function Rating ( {stars} ) {
+function Rating ( {stars, showSuffix = false, handleClick = () => {}} ) {
     const fillStars = () => {
         const etiquetas = [];
         const starSelected = [...Array(stars)].map((_, index) => (
@@ -17,9 +17,9 @@ function Rating ( {stars} ) {
     }
 
     return (
-        <div className='RatingContainer'>
+        <div className='RatingContainer' onClick={() => handleClick()}>
             {fillStars()}
-            <h3>& up</h3>
+            {showSuffix && <h3>& up</h3>}
         </div>
     )
 }
