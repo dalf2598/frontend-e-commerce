@@ -10,6 +10,7 @@ function SearchProvider({ children }) {
   const [imageProduct, setImageProduct] = useState("");
   const [titleProduct, setTitleProduct] = useState("");
   const [priceProduct, setPriceProduct] = useState("");
+  const [ratingProduct, setRatingProduct] = useState(0);
   const [descriptionProduct, setDescriptionProduct] = useState("");
 
   const getData = async () => {
@@ -53,7 +54,9 @@ function SearchProvider({ children }) {
         priceProduct,
         setPriceProduct,
         descriptionProduct,
-        setDescriptionProduct
+        setDescriptionProduct,
+        ratingProduct,
+        setRatingProduct
       }}
     >
       {children}

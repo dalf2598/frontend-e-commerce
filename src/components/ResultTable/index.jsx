@@ -23,6 +23,7 @@ function ResultTable () {
                             image = {product.image}
                             title = {product.title}
                             price = {product.price}
+                            rating= {Math.round(product.rating.rate)}
                             description = {product.description}
                         />
                     )

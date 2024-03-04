@@ -3,12 +3,13 @@ import { Detail } from './Detail'
 import { SearchContext } from '../../../contexts/SearchContext';
 import './Card.css'
 
-function Card ({ image, title, price, description }) {
+function Card ({ image, title, price, rating, description}) {
     const {
         setIsOpen,
         setImageProduct,
         setTitleProduct,
         setPriceProduct,
+        setRatingProduct,
         setDescriptionProduct,
     } = useContext(SearchContext);
 
@@ -17,6 +18,7 @@ function Card ({ image, title, price, description }) {
         setImageProduct(image)
         setTitleProduct(title)
         setPriceProduct(price)
+        setRatingProduct(rating)
         setDescriptionProduct(description)
     }
 
@@ -28,6 +30,7 @@ function Card ({ image, title, price, description }) {
             <Detail 
                 title = {title}
                 price = {price}
+                rating= {rating}
             />
         </div>
     )

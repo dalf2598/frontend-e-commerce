@@ -10,6 +10,7 @@ function Modal () {
         imageProduct,
         titleProduct,
         priceProduct,
+        ratingProduct,
         descriptionProduct
     } = useContext(SearchContext);
 
@@ -29,7 +30,7 @@ function Modal () {
                         <h3>{titleProduct}</h3>
                         <h3>${priceProduct}</h3>
                     </div>
-                    <Rating stars={3}/>
+                    <Rating stars={ratingProduct}/>
                     <h6>{descriptionProduct}</h6>
                 </div>
             </div>
