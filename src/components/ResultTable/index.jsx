@@ -4,16 +4,16 @@ import { Card } from './Card'
 import { Modal } from '../Modal'
 import './ResultTable.css'
 
-function ResultTable () {
+function ResultTable ({showCart}) {
     const {
         displayedProducts,
         isLoading,
         isOpen,
       } = useContext(SearchContext);
     return (
-        <div className='ResultContainer'>
+        <div className={`ResultContainer ${ showCart ? "two-columns" : "" }`}>
             <h2>Results:</h2>
-            <div className='CardResultsContainer'>
+            <div className={`CardResultsContainer ${ showCart ? "two-columns" : "" }`}>
                 {   isLoading ?
                     <span className="loader"></span>
                     :

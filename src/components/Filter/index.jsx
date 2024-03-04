@@ -6,7 +6,7 @@ function Filter () {
     return (
         <div className='FilterContainer'>
             <TypeFilter
-                name='Category'
+                name='Categories'
                 options={[
                     {id: "men's clothing", label: "Men's Clothing"},
                     {id: "women's clothing", label: "Women's Clothing"},

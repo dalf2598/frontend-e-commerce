@@ -3,12 +3,12 @@ import { CartLogo } from '../../assets/CartLogo'
 import { Search } from './Search'
 import './Navbar.css'
 
-function Navbar() {
+function Navbar({setShowCart}) {
     return (
         <div className='NavbarContainer'>
             <Logo />
             <Search />
-            <CartLogo />
+            <CartLogo setShowCart={setShowCart} />
         </div>
     )
 }

@@ -7,7 +7,7 @@ function Detail ({title, price, rating }) {
             <h3>{title}</h3>
             <Rating stars={rating}/>
             <h3>${price}</h3>
-            <button> Add to Cart</button>
+            {/* <button> Add to Cart</button> */}
         </div>
     )
 }

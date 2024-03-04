@@ -1,14 +1,24 @@
 .ResultContainer {
     grid-area: results;
+    margin-left: 4%;
 }
 
-.ResultContainer .CardResultsContainer {
+.ResultContainer.two-columns {
+    margin-left: 8%;
+}
+
+.CardResultsContainer {
     display: grid;
-    grid-template-columns: auto auto auto auto;
-    gap: 5%;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+    grid-template-columns: auto auto auto;
+    column-gap: 10%;
+    row-gap: 50px;
+    justify-content: start;
+    margin-top: 20px;
+}
+
+.CardResultsContainer.two-columns {
+    grid-template-columns: auto auto;
+    column-gap: 15%;
 }
 
 .loader {
@@ -20,13 +30,14 @@
     display: inline-block;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
-    }
+}
 
-    @keyframes rotation {
+@keyframes rotation {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
-    } 
+}

@@ -105,6 +105,7 @@ function SearchProvider({ children }) {
   return (
     <SearchContext.Provider
       value={{
+        searchValue,
         setSearchValue,
         setSortOrder,
         setCategories,
