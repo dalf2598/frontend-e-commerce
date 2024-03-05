@@ -1,11 +1,21 @@
 .CounterContainer {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
+    color: #8B8B8B;
 }
 
 .CounterContainer span {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #8B8B8B;
+}
+
+.CounterContainer .IconIncrement{
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.CounterContainer .IconDecrement{
+    font-size: 28px;
+    cursor: pointer;
 }

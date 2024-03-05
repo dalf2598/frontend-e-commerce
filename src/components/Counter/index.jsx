@@ -1,18 +1,13 @@
-import IconButton from "@mui/material/IconButton";
-import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import { AiOutlineMinusCircle } from "react-icons/ai";
+import { IoIosAddCircleOutline } from "react-icons/io";
 import "./Counter.css";
 
 function Counter({ value, handleDecrement, handleIncrement }) { 
     return (
       <div className="CounterContainer">
-        <IconButton onClick={handleDecrement} >
-          <RemoveCircleOutlineIcon style={{ fontSize: '30px' }} />
-        </IconButton>
+        <AiOutlineMinusCircle className="IconDecrement" onClick={handleDecrement}/>
         <span>{value}</span>
-        <IconButton onClick={handleIncrement}>
-          <AddCircleOutlineIcon style={{ fontSize: '30px' }} />
-        </IconButton>
+        <IoIosAddCircleOutline className="IconIncrement" onClick={handleIncrement}/>
       </div>
   );
 }
