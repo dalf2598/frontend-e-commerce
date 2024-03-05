@@ -1,0 +1,11 @@
+.CounterContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.CounterContainer span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #8B8B8B;
+}
