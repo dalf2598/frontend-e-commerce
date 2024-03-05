@@ -50,10 +50,40 @@
     color: white;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    padding: 23px;
+    padding: 23px 30px;
 }
 
 .ContentModalContainer .DetailsModalContainer .HeaderDetailModalContainer {
     display: flex;
     justify-content: space-between;
+}
+
+.ContentModalContainer .DetailsModalContainer .HeaderDetailModalContainer h3{
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.ContentModalContainer .DetailsModalContainer .HeaderDetailModalContainer .Price{
+    font-size: 20px;
+}
+
+.ContentModalContainer .DetailsModalContainer .ActionsModalContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ContentModalContainer .DetailsModalContainer .ActionsModalContainer button {
+    display: block; 
+    padding: 10px 30px;
+    border-radius: 10px; 
+    background-color:  #56D35B; 
+    color: white; 
+    border: none; 
+    cursor: pointer; 
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: bold;
+}
+  
+.ContentModalContainer .DetailsModalContainer .ActionsModalContainer button:hover {
+    background-color:  #079992;
 }
