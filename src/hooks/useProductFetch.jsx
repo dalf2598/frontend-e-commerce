@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { sortProductsByNameOrPrice } from "../utils/utils";
 
 const PRODUCTS_URL = "https://fakestoreapi.com/products";
 
@@ -14,18 +15,18 @@ export function useProductFetch(setProducts, setVisibleProducts) {
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log("hello world");
       try {
         const productList = await getData();
-        const sortedProductList = productList.sort((a, b) =>
-          a.title.localeCompare(b.title)
+        const sortedProductList = sortProductsByNameOrPrice(
+          productList,
+          "alphabetically"
         );
         setProducts(sortedProductList);
         setVisibleProducts(sortedProductList);
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
-        setError(JSON.stringify(error));
+        setError(String(error));
       }
     };
     fetchData();
