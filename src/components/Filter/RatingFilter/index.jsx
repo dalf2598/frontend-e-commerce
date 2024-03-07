@@ -1,9 +1,9 @@
-import { useSearchContext } from "../../../contexts/SearchContext";
+import { useProductContext } from "../../../contexts/ProductContext";
 import { Rating } from "./Rating";
 import "./RatingFilter.css";
 
 function RatingFilter() {
-  const { setMinimunRate } = useSearchContext();
+  const { setMinimunRate } = useProductContext();
   return (
     <div className="RatingFilterContainer">
       <h2>Rates:</h2>

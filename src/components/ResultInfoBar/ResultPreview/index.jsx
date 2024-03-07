@@ -1,8 +1,8 @@
-import { useSearchContext } from "../../../contexts/SearchContext";
+import { useProductContext } from "../../../contexts/ProductContext";
 import "./ResultPreview.css";
 
 function ResultPreview() {
-  const { searchValue } = useSearchContext();
+  const { searchValue } = useProductContext();
   return (
     <div className="ResultPreviewContainer">
       <h3>1-16 of over 4000 results for </h3>

@@ -1,46 +1,43 @@
-export const searchProducts = (currentProducts, currentSearchValue) => {
-  const searchResult = currentProducts.filter((product) => {
+export const searchProducts = (products, searchValue) => {
+  const searchResult = products.filter((product) => {
     const productName = product.title.toLowerCase();
-    return productName.includes(currentSearchValue.toLowerCase());
+    return productName.includes(searchValue.toLowerCase());
   });
   return searchResult;
 };
 
-export const sortProductsByNameOrPrice = (
-  currentProducts,
-  currentSortOrder
-) => {
-  if (currentSortOrder === "alphabetically") {
-    return currentProducts.sort((a, b) => a.title.localeCompare(b.title));
+export const sortProductsByNameOrPrice = (products, sortOrder) => {
+  if (sortOrder === "alphabetically") {
+    return products.sort((a, b) => a.title.localeCompare(b.title));
   }
 
-  if (currentSortOrder === "ascending") {
-    return currentProducts.sort((a, b) => a.price - b.price);
+  if (sortOrder === "ascending") {
+    return products.sort((a, b) => a.price - b.price);
   }
 
-  if (currentSortOrder === "descending") {
-    return currentProducts.sort((a, b) => b.price - a.price);
+  if (sortOrder === "descending") {
+    return products.sort((a, b) => b.price - a.price);
   }
-  return currentProducts;
+  return products;
 };
 
-const belongToCheckedCategory = (currentProduct, currentCategories) => {
-  return currentCategories.some(
-    (category) => category.checked && currentProduct.category === category.value
+const belongToCheckedCategory = (product, categories) => {
+  return categories.some(
+    (category) => category.checked && product.category === category.value
   );
 };
 
-export const filterByCategory = (currentProducts, currentCategories) => {
-  const allUnchecked = currentCategories.every(
+export const filterByCategory = (products, categories) => {
+  const allUnchecked = categories.every(
     (category) => category.checked === false
   );
   if (allUnchecked) {
-    return currentProducts;
+    return products;
   }
 
-  const productsFilteredByCategory = currentProducts
+  const productsFilteredByCategory = products
     .map((product) => {
-      if (belongToCheckedCategory(product, currentCategories)) {
+      if (belongToCheckedCategory(product, categories)) {
         return product;
       }
     })
@@ -49,9 +46,9 @@ export const filterByCategory = (currentProducts, currentCategories) => {
   return productsFilteredByCategory;
 };
 
-export const filterByRate = (currentProducts, currentRating) => {
-  const productsFilteredByRate = currentProducts.filter(
-    (product) => Math.round(product.rating.rate) >= currentRating
+export const filterByRate = (products, minimunRate) => {
+  const productsFilteredByRate = products.filter(
+    (product) => Math.round(product.rating.rate) >= minimunRate
   );
   return productsFilteredByRate;
 };

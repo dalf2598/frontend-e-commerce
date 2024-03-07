@@ -1,8 +1,8 @@
-import { useSearchContext } from "../../../contexts/SearchContext";
+import { useProductContext } from "../../../contexts/ProductContext";
 import "./TypeFilter.css";
 
 function TypeFilter({ name, options }) {
-  const { setCategories } = useSearchContext();
+  const { setCategories } = useProductContext();
 
   const handleChange = (value) => {
     setCategories((prev) => {

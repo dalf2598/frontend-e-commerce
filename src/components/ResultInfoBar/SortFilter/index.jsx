@@ -1,8 +1,8 @@
-import { useSearchContext } from "../../../contexts/SearchContext";
+import { useProductContext } from "../../../contexts/ProductContext";
 import "./SortFilter.css";
 
 function SortFilter() {
-  const { setSortOrder } = useSearchContext();
+  const { setSortOrder } = useProductContext();
 
   return (
     <div className="SortFilterContainer">

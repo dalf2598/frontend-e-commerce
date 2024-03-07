@@ -3,13 +3,13 @@ import { useProductCard } from "../../hooks/useProductCard";
 import { useProductFetch } from "../../hooks/useProductFetch";
 import { useProductFilter } from "../../hooks/useProductFilter";
 
-const SearchContext = createContext();
+const ProductContext = createContext();
 
-export function useSearchContext() {
-  return useContext(SearchContext);
+export function useProductContext() {
+  return useContext(ProductContext);
 }
 
-export function SearchProvider({ children }) {
+export function ProductProvider({ children }) {
   const [products, setProducts] = useState([]);
   const [visibleProducts, setVisibleProducts] = useState([]);
   const productFetch = useProductFetch(setProducts, setVisibleProducts);
@@ -17,7 +17,7 @@ export function SearchProvider({ children }) {
   const productCard = useProductCard();
 
   return (
-    <SearchContext.Provider
+    <ProductContext.Provider
       value={{
         visibleProducts,
         ...productFetch,
@@ -26,6 +26,6 @@ export function SearchProvider({ children }) {
       }}
     >
       {children}
-    </SearchContext.Provider>
+    </ProductContext.Provider>
   );
 }

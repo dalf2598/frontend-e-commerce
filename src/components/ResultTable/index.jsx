@@ -1,10 +1,10 @@
-import { useSearchContext } from "../../contexts/SearchContext";
+import { useProductContext } from "../../contexts/ProductContext";
 import { Card } from "./Card";
 import { Modal } from "../Modal";
 import "./ResultTable.css";
 
 function ResultTable({ showCart }) {
-  const { visibleProducts, isLoading, isOpen } = useSearchContext();
+  const { visibleProducts, isLoading, isOpen } = useProductContext();
   return (
     <div className={`ResultContainer ${showCart ? "two-columns" : ""}`}>
       <h2>Results:</h2>
