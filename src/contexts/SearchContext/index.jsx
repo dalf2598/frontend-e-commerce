@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext, useContext } from "react";
+import { useProductCard } from "../../hooks/useProductCard";
 
 const SearchContext = createContext();
 
@@ -7,10 +8,9 @@ export function useSearchContext() {
 }
 
 function SearchProvider({ children }) {
-  const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState([]);
-  
+
   const [displayedProducts, setDisplayedProducts] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [sortOrder, setSortOrder] = useState("");
@@ -20,13 +20,7 @@ function SearchProvider({ children }) {
     { value: "jewelery", checked: false },
     { value: "electronics", checked: false },
   ]);
-  const [rate, setRate] = useState(1);
-
-  const [imageProduct, setImageProduct] = useState("");
-  const [titleProduct, setTitleProduct] = useState("");
-  const [priceProduct, setPriceProduct] = useState("");
-  const [ratingProduct, setRatingProduct] = useState(0);
-  const [descriptionProduct, setDescriptionProduct] = useState("");
+  const [minimunRate, setMinimunRate] = useState(1);
 
   const getData = async () => {
     const response = await fetch("https://fakestoreapi.com/products");
@@ -38,7 +32,9 @@ function SearchProvider({ children }) {
     const fetchData = async () => {
       try {
         const productList = await getData();
-        const sortedProductList = productList.sort((a, b) => a.title.localeCompare(b.title))
+        const sortedProductList = productList.sort((a, b) =>
+          a.title.localeCompare(b.title)
+        );
         setProducts(sortedProductList);
         setDisplayedProducts(sortedProductList);
         setIsLoading(false);
@@ -48,7 +44,6 @@ function SearchProvider({ children }) {
     };
     fetchData();
   }, []);
-
 
   useEffect(() => {
     const searchProducts = (currentProducts, currentSearchValue) => {
@@ -62,49 +57,63 @@ function SearchProvider({ children }) {
     const sortProductsByNameOrPrice = (currentProducts, currentSortOrder) => {
       if (currentSortOrder === "alphabetically") {
         return currentProducts.sort((a, b) => a.title.localeCompare(b.title));
-      } 
-  
+      }
+
       if (currentSortOrder === "ascending") {
         return currentProducts.sort((a, b) => a.price - b.price);
-      } 
-  
+      }
+
       if (currentSortOrder === "descending") {
         return currentProducts.sort((a, b) => b.price - a.price);
-      } 
+      }
       return currentProducts;
-    }
+    };
 
     const belongToCheckedCategory = (currentProduct, currentCategories) => {
-      return currentCategories.some(category => category.checked && currentProduct.category === category.value);
-    }
+      return currentCategories.some(
+        (category) =>
+          category.checked && currentProduct.category === category.value
+      );
+    };
 
     const filterByCategory = (currentProducts, currentCategories) => {
-      const allUnchecked = currentCategories.every(category => category.checked === false);
-      if(allUnchecked){
+      const allUnchecked = currentCategories.every(
+        (category) => category.checked === false
+      );
+      if (allUnchecked) {
         return currentProducts;
       }
 
-      const productsFilteredByCategory = currentProducts.map((product) => {
-        if(belongToCheckedCategory(product, currentCategories)){
-          return product;
-        }
-      }).filter(product => product !== undefined);;
+      const productsFilteredByCategory = currentProducts
+        .map((product) => {
+          if (belongToCheckedCategory(product, currentCategories)) {
+            return product;
+          }
+        })
+        .filter((product) => product !== undefined);
 
       return productsFilteredByCategory;
-    }
+    };
 
     const filterByRate = (currentProducts, currentRating) => {
-      const productsFilteredByRate = currentProducts.filter(product => Math.round(product.rating.rate) >= currentRating);
+      const productsFilteredByRate = currentProducts.filter(
+        (product) => Math.round(product.rating.rate) >= currentRating
+      );
       return productsFilteredByRate;
-    }
+    };
 
     const searchResult = searchProducts(products, searchValue);
     const sortResult = sortProductsByNameOrPrice(searchResult, sortOrder);
     const filterByCategoryResult = filterByCategory(sortResult, categories);
-    const filterByRateResult = filterByRate(filterByCategoryResult, rate);
-    
+    const filterByRateResult = filterByRate(
+      filterByCategoryResult,
+      minimunRate
+    );
+
     setDisplayedProducts(filterByRateResult);
-  }, [searchValue, sortOrder, categories, rate]);
+  }, [searchValue, sortOrder, categories, minimunRate, products]);
+
+  const productCard = useProductCard();
 
   return (
     <SearchContext.Provider
@@ -113,21 +122,10 @@ function SearchProvider({ children }) {
         setSearchValue,
         setSortOrder,
         setCategories,
-        setRate,
+        setMinimunRate,
         displayedProducts,
         isLoading,
-        isOpen,
-        setIsOpen,
-        imageProduct,
-        setImageProduct,
-        titleProduct,
-        setTitleProduct,
-        priceProduct,
-        setPriceProduct,
-        descriptionProduct,
-        setDescriptionProduct,
-        ratingProduct,
-        setRatingProduct,
+        ...productCard,
       }}
     >
       {children}
