@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import { SearchContext } from "../../../contexts/SearchContext";
+import { useSearchContext } from "../../../contexts/SearchContext";
 import "./Search.css";
 
 function Search() {
-  const { setSearchValue } = useContext(SearchContext);
+  const { setSearchValue } = useSearchContext();
 
   return (
     <div className="SearchContainer">

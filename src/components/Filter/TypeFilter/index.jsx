@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import { SearchContext } from "../../../contexts/SearchContext";
+import { useSearchContext } from "../../../contexts/SearchContext";
 import "./TypeFilter.css";
 
 function TypeFilter({ name, options }) {
-  const { setCategories } = useContext(SearchContext);
+  const { setCategories } = useSearchContext();
 
   const handleChange = (value) => {
     setCategories((prev) => {

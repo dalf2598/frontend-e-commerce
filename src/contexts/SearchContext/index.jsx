@@ -1,6 +1,10 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect, createContext, useContext } from "react";
 
 const SearchContext = createContext();
+
+export function useSearchContext() {
+  return useContext(SearchContext);
+}
 
 function SearchProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);

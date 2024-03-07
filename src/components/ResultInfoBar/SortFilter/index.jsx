@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import { SearchContext } from "../../../contexts/SearchContext";
+import { useSearchContext } from "../../../contexts/SearchContext";
 import "./SortFilter.css";
 
 function SortFilter() {
-  const { setSortOrder } = useContext(SearchContext);
+  const { setSortOrder } = useSearchContext();
 
   return (
     <div className="SortFilterContainer">

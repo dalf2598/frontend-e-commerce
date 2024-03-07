@@ -1,7 +1,6 @@
-import { useContext } from "react";
 import { Rating } from "../Filter/RatingFilter/Rating";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { SearchContext } from "../../contexts/SearchContext";
+import { useSearchContext } from "../../contexts/SearchContext";
 import { Counter } from "../Counter";
 import "./Modal.css";
 
@@ -13,7 +12,7 @@ function Modal() {
     priceProduct,
     ratingProduct,
     descriptionProduct,
-  } = useContext(SearchContext);
+  } = useSearchContext();
 
   const setCloseModal = () => {
     setIsOpen(false);
@@ -36,15 +35,15 @@ function Modal() {
           </div>
           <Rating stars={ratingProduct} />
           <h6>{descriptionProduct}</h6>
-        <div className="ActionsModalContainer">
-          <Counter
-            value={1}
-            handleDecrement={() => {}}
-            handleIncrement={() => {}}
-            whiteColor
-          />
+          <div className="ActionsModalContainer">
+            <Counter
+              value={1}
+              handleDecrement={() => {}}
+              handleIncrement={() => {}}
+              whiteColor
+            />
             <button>Add</button>
-        </div>
+          </div>
         </div>
       </div>
     </div>
