@@ -7,17 +7,17 @@ import { useCart } from "../../contexts/CartContext";
 import "./LandingPage.css";
 
 function LandingPage() {
-  const { showCart, setShowCart } = useCart();
+  const { showCart } = useCart();
 
   const contentClassName = `content ${showCart ? "three-columns" : ""}`;
 
   return (
     <div>
-      <Navbar setShowCart={setShowCart} />
+      <Navbar />
       <div className={contentClassName}>
         <ResultInfoBar />
         <Filter />
-        <ResultTable showCart={showCart} />
+        <ResultTable />
         {showCart && <Cart />}
       </div>
     </div>

@@ -2,8 +2,10 @@ import { useProduct } from "../../contexts/ProductContext";
 import { Card } from "./Card";
 import { Modal } from "../Modal";
 import "./ResultTable.css";
+import { useCart } from "../../contexts/CartContext";
 
-function ResultTable({ showCart }) {
+function ResultTable() {
+  const { showCart } = useCart();
   const { visibleProducts, isLoading, isOpen } = useProduct();
   const resultsClassName = `ResultsContainer ${showCart ? "two-columns" : ""}`;
   const cardsClassName = `CardsContainer ${showCart ? "two-columns" : ""}`;

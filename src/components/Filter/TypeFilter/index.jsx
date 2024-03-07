@@ -1,4 +1,5 @@
 import { useProduct } from "../../../contexts/ProductContext";
+import PropTypes from "prop-types";
 import "./TypeFilter.css";
 
 function TypeFilter({ name, options }) {
@@ -33,5 +34,10 @@ function TypeFilter({ name, options }) {
     </div>
   );
 }
+
+TypeFilter.propTypes = {
+  name: PropTypes.string.isRequired,
+  options: PropTypes.array.isRequired,
+};
 
 export { TypeFilter };

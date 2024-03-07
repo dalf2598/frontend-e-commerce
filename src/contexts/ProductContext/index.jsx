@@ -2,14 +2,15 @@ import { useState, createContext, useContext } from "react";
 import { useProductCard } from "../../hooks/useProductCard";
 import { useProductFetch } from "../../hooks/useProductFetch";
 import { useProductFilter } from "../../hooks/useProductFilter";
+import PropTypes from "prop-types";
 
 const ProductContext = createContext();
 
-export function useProduct() {
+function useProduct() {
   return useContext(ProductContext);
 }
 
-export function ProductProvider({ children }) {
+function ProductProvider({ children }) {
   const [products, setProducts] = useState([]);
   const [visibleProducts, setVisibleProducts] = useState([]);
   const productFetch = useProductFetch(setProducts, setVisibleProducts);
@@ -29,3 +30,9 @@ export function ProductProvider({ children }) {
     </ProductContext.Provider>
   );
 }
+
+ProductProvider.propTypes = {
+  children: PropTypes.elementType.isRequired,
+};
+
+export { useProduct, ProductProvider };

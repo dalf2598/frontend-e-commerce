@@ -1,5 +1,6 @@
 import { Detail } from "./Detail";
 import { useProduct } from "../../../contexts/ProductContext";
+import PropTypes from "prop-types";
 import "./Card.css";
 
 function Card({ image, title, price, rating, description }) {
@@ -30,5 +31,13 @@ function Card({ image, title, price, rating, description }) {
     </div>
   );
 }
+
+Card.propTypes = {
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  rating: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
+};
 
 export { Card };

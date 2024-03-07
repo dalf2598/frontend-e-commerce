@@ -1,12 +1,13 @@
 import { useState, createContext, useContext } from "react";
+import PropTypes from "prop-types";
 
 const CartContext = createContext();
 
-export function useCart() {
+function useCart() {
   return useContext(CartContext);
 }
 
-export function CartProvider({ children }) {
+function CartProvider({ children }) {
   const [showCart, setShowCart] = useState(false);
   const [total, setTotal] = useState(0);
   const [items, setItems] = useState({});
@@ -26,3 +27,9 @@ export function CartProvider({ children }) {
     </CartContext.Provider>
   );
 }
+
+CartProvider.propTypes = {
+  children: PropTypes.elementType.isRequired,
+};
+
+export { useCart, CartProvider };
