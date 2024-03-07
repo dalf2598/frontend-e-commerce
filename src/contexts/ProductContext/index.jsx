@@ -5,7 +5,7 @@ import { useProductFilter } from "../../hooks/useProductFilter";
 
 const ProductContext = createContext();
 
-export function useProductContext() {
+export function useProduct() {
   return useContext(ProductContext);
 }
 

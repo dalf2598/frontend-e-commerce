@@ -1,5 +1,5 @@
 import { Detail } from "./Detail";
-import { useProductContext } from "../../../contexts/ProductContext";
+import { useProduct } from "../../../contexts/ProductContext";
 import "./Card.css";
 
 function Card({ image, title, price, rating, description }) {
@@ -10,7 +10,7 @@ function Card({ image, title, price, rating, description }) {
     setPriceProduct,
     setRatingProduct,
     setDescriptionProduct,
-  } = useProductContext();
+  } = useProduct();
 
   const openModal = () => {
     setIsOpen(true);

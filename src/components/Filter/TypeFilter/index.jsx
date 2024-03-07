@@ -1,8 +1,8 @@
-import { useProductContext } from "../../../contexts/ProductContext";
+import { useProduct } from "../../../contexts/ProductContext";
 import "./TypeFilter.css";
 
 function TypeFilter({ name, options }) {
-  const { setCategories } = useProductContext();
+  const { setCategories } = useProduct();
 
   const handleChange = (value) => {
     setCategories((prev) => {

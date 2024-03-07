@@ -1,0 +1,17 @@
+.content{
+    display: grid;
+    grid-template-areas: 
+      "resultInfoBar resultInfoBar resultInfoBar"    
+      "filter results results";
+    grid-template-columns: 15% auto;
+    column-gap: 30px;
+    row-gap: 15px;
+    padding: 20px 40px;
+  }
+  
+  .content.three-columns {
+    grid-template-areas: 
+      "resultInfoBar resultInfoBar cart"    
+      "filter results cart";
+    grid-template-columns: 15% auto 25%;
+  }

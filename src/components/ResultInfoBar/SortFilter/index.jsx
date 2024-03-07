@@ -1,8 +1,8 @@
-import { useProductContext } from "../../../contexts/ProductContext";
+import { useProduct } from "../../../contexts/ProductContext";
 import "./SortFilter.css";
 
 function SortFilter() {
-  const { setSortOrder } = useProductContext();
+  const { setSortOrder } = useProduct();
 
   return (
     <div className="SortFilterContainer">

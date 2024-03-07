@@ -1,6 +1,6 @@
 import { Rating } from "../Filter/RatingFilter/Rating";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { useProductContext } from "../../contexts/ProductContext";
+import { useProduct } from "../../contexts/ProductContext";
 import { Counter } from "../Counter";
 import "./Modal.css";
 
@@ -12,7 +12,7 @@ function Modal() {
     priceProduct,
     ratingProduct,
     descriptionProduct,
-  } = useProductContext();
+  } = useProduct();
 
   const setCloseModal = () => {
     setIsOpen(false);

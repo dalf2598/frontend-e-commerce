@@ -1,8 +1,8 @@
-import { useProductContext } from "../../../contexts/ProductContext";
+import { useProduct } from "../../../contexts/ProductContext";
 import "./Search.css";
 
 function Search() {
-  const { setSearchValue } = useProductContext();
+  const { setSearchValue } = useProduct();
 
   return (
     <div className="SearchContainer">

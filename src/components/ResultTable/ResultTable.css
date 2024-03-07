@@ -1,13 +1,13 @@
-.ResultContainer {
+.ResultsContainer {
     grid-area: results;
     margin-left: 4%;
 }
 
-.ResultContainer.two-columns {
+.ResultsContainer.two-columns {
     margin-left: 8%;
 }
 
-.CardResultsContainer {
+.CardsContainer {
     display: grid;
     grid-template-columns: auto auto auto;
     column-gap: 10%;
@@ -16,7 +16,7 @@
     margin-top: 20px;
 }
 
-.CardResultsContainer.two-columns {
+.CardsContainer.two-columns {
     grid-template-columns: auto auto;
     column-gap: 15%;
 }
