@@ -1,5 +1,6 @@
 import { useState, useEffect, createContext, useContext } from "react";
 import { useProductCard } from "../../hooks/useProductCard";
+import { useProductFetch } from "../../hooks/useProductFetch";
 
 const SearchContext = createContext();
 
@@ -8,10 +9,12 @@ export function useSearchContext() {
 }
 
 function SearchProvider({ children }) {
-  const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState([]);
+  const [visibleProducts, setVisibleProducts] = useState([]);
 
-  const [displayedProducts, setDisplayedProducts] = useState([]);
+  const { isLoading } = useProductFetch(setProducts, setVisibleProducts);
+  const productCard = useProductCard();
+
   const [searchValue, setSearchValue] = useState("");
   const [sortOrder, setSortOrder] = useState("");
   const [categories, setCategories] = useState([
@@ -21,29 +24,6 @@ function SearchProvider({ children }) {
     { value: "electronics", checked: false },
   ]);
   const [minimunRate, setMinimunRate] = useState(1);
-
-  const getData = async () => {
-    const response = await fetch("https://fakestoreapi.com/products");
-    const data = await response.json();
-    return data;
-  };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const productList = await getData();
-        const sortedProductList = productList.sort((a, b) =>
-          a.title.localeCompare(b.title)
-        );
-        setProducts(sortedProductList);
-        setDisplayedProducts(sortedProductList);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
-  }, []);
 
   useEffect(() => {
     const searchProducts = (currentProducts, currentSearchValue) => {
@@ -110,10 +90,8 @@ function SearchProvider({ children }) {
       minimunRate
     );
 
-    setDisplayedProducts(filterByRateResult);
+    setVisibleProducts(filterByRateResult);
   }, [searchValue, sortOrder, categories, minimunRate, products]);
-
-  const productCard = useProductCard();
 
   return (
     <SearchContext.Provider
@@ -123,7 +101,7 @@ function SearchProvider({ children }) {
         setSortOrder,
         setCategories,
         setMinimunRate,
-        displayedProducts,
+        visibleProducts,
         isLoading,
         ...productCard,
       }}

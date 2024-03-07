@@ -4,7 +4,7 @@ import { Modal } from "../Modal";
 import "./ResultTable.css";
 
 function ResultTable({ showCart }) {
-  const { displayedProducts, isLoading, isOpen } = useSearchContext();
+  const { visibleProducts, isLoading, isOpen } = useSearchContext();
   return (
     <div className={`ResultContainer ${showCart ? "two-columns" : ""}`}>
       <h2>Results:</h2>
@@ -12,7 +12,7 @@ function ResultTable({ showCart }) {
         {isLoading ? (
           <span className="loader"></span>
         ) : (
-          displayedProducts.map((product, index) => (
+          visibleProducts.map((product, index) => (
             <Card
               key={index}
               image={product.image}
