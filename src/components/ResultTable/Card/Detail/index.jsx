@@ -7,7 +7,7 @@ function Detail({ title, price, rating }) {
     <div className="DetailsCardContainer">
       <h3>{title}</h3>
       <Rating stars={rating} />
-      <h3 className="Price">${price}</h3>
+      <h3 className="Price">${price.toFixed(2)}</h3>
     </div>
   );
 }

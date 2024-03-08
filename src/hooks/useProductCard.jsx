@@ -2,6 +2,7 @@ import { useState } from "react";
 
 export function useProductCard() {
   const [isOpen, setIsOpen] = useState(false);
+  const [idProduct, setIdProduct] = useState(0);
   const [imageProduct, setImageProduct] = useState("");
   const [titleProduct, setTitleProduct] = useState("");
   const [priceProduct, setPriceProduct] = useState("");
@@ -11,6 +12,8 @@ export function useProductCard() {
   return {
     isOpen,
     setIsOpen,
+    idProduct,
+    setIdProduct,
     imageProduct,
     setImageProduct,
     titleProduct,

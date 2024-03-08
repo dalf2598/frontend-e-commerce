@@ -3,9 +3,10 @@ import { useProduct } from "../../../contexts/ProductContext";
 import PropTypes from "prop-types";
 import "./Card.css";
 
-function Card({ image, title, price, rating, description }) {
+function Card({ id, image, title, price, rating, description }) {
   const {
     setIsOpen,
+    setIdProduct,
     setImageProduct,
     setTitleProduct,
     setPriceProduct,
@@ -15,6 +16,7 @@ function Card({ image, title, price, rating, description }) {
 
   const openModal = () => {
     setIsOpen(true);
+    setIdProduct(id);
     setImageProduct(image);
     setTitleProduct(title);
     setPriceProduct(price);
@@ -33,6 +35,7 @@ function Card({ image, title, price, rating, description }) {
 }
 
 Card.propTypes = {
+  id: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,

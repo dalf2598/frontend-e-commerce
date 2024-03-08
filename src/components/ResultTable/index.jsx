@@ -20,6 +20,7 @@ function ResultTable() {
           visibleProducts.map((product, index) => (
             <Card
               key={index}
+              id={product.id}
               image={product.image}
               title={product.title}
               price={product.price}
