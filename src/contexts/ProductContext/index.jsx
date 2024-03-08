@@ -32,7 +32,10 @@ function ProductProvider({ children }) {
 }
 
 ProductProvider.propTypes = {
-  children: PropTypes.elementType.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element), // Array of elements
+    PropTypes.element, // Single element
+  ]).isRequired,
 };
 
 export { useProduct, ProductProvider };

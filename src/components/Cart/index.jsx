@@ -4,12 +4,12 @@ import { useCart } from "../../contexts/CartContext";
 import "./Cart.css";
 
 function Cart() {
-  const { itemList, total } = useCart();
+  const { itemList, setItemList, total } = useCart();
 
   return (
     <div className="CartContainer">
       <Total value={total} />
-      <ItemList list={itemList} />
+      <ItemList list={itemList} setItemList={setItemList} />
     </div>
   );
 }

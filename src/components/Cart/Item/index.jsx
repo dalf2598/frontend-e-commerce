@@ -3,17 +3,21 @@ import { Counter } from "../../Counter";
 import PropTypes from "prop-types";
 import "./Item.css";
 
-function Item({ id, price, quantity, image }) {
-  const handleRemoveItem = () => {
-    console.log(`Removing Item ${id}`);
-  };
-
+function Item({
+  id,
+  price,
+  quantity,
+  image,
+  removeItem,
+  incrementItem,
+  decrementItem,
+}) {
   return (
     <div className="ItemContainer">
       <div className="ProductImageContainer">
         <AiOutlineCloseCircle
           className="closeModal"
-          onClick={handleRemoveItem}
+          onClick={() => removeItem(id)}
         />
         <img src={image} />
       </div>
@@ -21,8 +25,8 @@ function Item({ id, price, quantity, image }) {
       <div className="QuantityContainer">
         <Counter
           value={quantity}
-          handleDecrement={() => {}}
-          handleIncrement={() => {}}
+          handleDecrement={() => decrementItem(id)}
+          handleIncrement={() => incrementItem(id)}
         />
       </div>
     </div>
@@ -34,6 +38,9 @@ Item.propTypes = {
   price: PropTypes.number.isRequired,
   quantity: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
+  removeItem: PropTypes.func.isRequired,
+  incrementItem: PropTypes.func.isRequired,
+  decrementItem: PropTypes.func.isRequired,
 };
 
 export { Item };

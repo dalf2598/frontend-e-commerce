@@ -37,7 +37,10 @@ function CartProvider({ children }) {
 }
 
 CartProvider.propTypes = {
-  children: PropTypes.elementType.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element), // Array of elements
+    PropTypes.element, // Single element
+  ]).isRequired,
 };
 
 export { useCart, CartProvider };
