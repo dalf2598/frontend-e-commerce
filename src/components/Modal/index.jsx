@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { Rating } from "../Filter/RatingFilter/Rating";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useProduct } from "../../contexts/ProductContext";
 import { Counter } from "../Counter";
+import { useCart } from "../../contexts/CartContext";
 import "./Modal.css";
-import { useState } from "react";
 
 function Modal() {
   const {
@@ -16,6 +17,8 @@ function Modal() {
     descriptionProduct,
   } = useProduct();
 
+  const { setItemList } = useCart();
+
   const [quantity, setQuantity] = useState(1);
 
   const handleDecrement = () =>
@@ -25,8 +28,33 @@ function Modal() {
 
   const handleCloseModal = () => setIsOpen(false);
 
+  const buildNewList = (itemList, newItem) => {
+    const hasItem = itemList.some((item) => item.id === newItem.id);
+    const updatedItemList = hasItem
+      ? itemList.map((item) => {
+          return {
+            ...item,
+            quantity:
+              item.id === newItem.id
+                ? item.quantity + newItem.quantity
+                : newItem.quantity,
+          };
+        })
+      : [...itemList, newItem];
+    return updatedItemList;
+  };
+
   const hanleAddProduct = () => {
-    console.log(idProduct, priceProduct, quantity);
+    const newItem = {
+      id: idProduct,
+      price: priceProduct,
+      quantity: quantity,
+      image: imageProduct,
+    };
+
+    setItemList((prev) => buildNewList(prev, newItem));
+    setQuantity(1);
+    handleCloseModal();
   };
 
   return (

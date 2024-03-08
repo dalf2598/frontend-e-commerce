@@ -1,4 +1,4 @@
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 
 const CartContext = createContext();
@@ -10,7 +10,15 @@ function useCart() {
 function CartProvider({ children }) {
   const [showCart, setShowCart] = useState(false);
   const [total, setTotal] = useState(0);
-  const [items, setItems] = useState({});
+  const [itemList, setItemList] = useState([]);
+
+  useEffect(() => {
+    const newTotal = itemList.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
+    setTotal(newTotal);
+  }, [itemList]);
 
   return (
     <CartContext.Provider
@@ -19,8 +27,8 @@ function CartProvider({ children }) {
         setShowCart,
         total,
         setTotal,
-        items,
-        setItems,
+        itemList,
+        setItemList,
       }}
     >
       {children}

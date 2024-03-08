@@ -3,7 +3,7 @@ import { Counter } from "../../Counter";
 import PropTypes from "prop-types";
 import "./Item.css";
 
-function Item({ id, image, price, quantity }) {
+function Item({ id, price, quantity, image }) {
   const handleRemoveItem = () => {
     console.log(`Removing Item ${id}`);
   };
@@ -31,9 +31,9 @@ function Item({ id, image, price, quantity }) {
 
 Item.propTypes = {
   id: PropTypes.number.isRequired,
-  image: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   quantity: PropTypes.number.isRequired,
+  image: PropTypes.string.isRequired,
 };
 
 export { Item };

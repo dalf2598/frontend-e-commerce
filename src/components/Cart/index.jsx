@@ -1,17 +1,15 @@
 import { Total } from "./Total";
-import { Item } from "./Item";
+import { ItemList } from "./ItemList";
+import { useCart } from "../../contexts/CartContext";
 import "./Cart.css";
 
 function Cart() {
+  const { itemList, total } = useCart();
+
   return (
     <div className="CartContainer">
-      <Total value={2000} />
-      <Item
-        id={1}
-        image={"https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg"}
-        price={2000}
-        quantity={1}
-      />
+      <Total value={total} />
+      <ItemList list={itemList} />
     </div>
   );
 }
